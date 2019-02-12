@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def show
+    render json: Order.find(params[:id])
+  end
+
   def new
     @order = Order.new
 
@@ -15,7 +19,7 @@ class OrdersController < ApplicationController
       redirect_to orders_path
     else
       flash[:alert] = "order not created"
-    
+
       render :new
     end
   end
