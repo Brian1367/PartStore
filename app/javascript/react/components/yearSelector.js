@@ -2,7 +2,7 @@ import React from "react";
 
 const YearSelector = props => {
   let years = [];
-  for (let i = 1930; i < 2020; i++) {
+  for (let i = 1980; i < 2020; i++) {
     years.push(
       <option value={`${i}`} key={i}>
         {i}
