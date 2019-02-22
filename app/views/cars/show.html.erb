@@ -1,0 +1,33 @@
+<div class="material input" style="background-image: url('https://cdn.motor1.com/images/mgl/7AzVP/s1/amalgam-collection-bugatti-chiron-engine.jpg')">
+<div class="input">
+  <h2>
+  <%= @car.year %>|<%= @car.make %>|<%= @car.model %>
+  </h2>
+
+
+    <h3> Parts </h3>
+
+</div>
+
+    <% @parts.each do |part| %>
+    <div class="card">
+      <h4><%= part.name %></h4>
+
+          <p> Part Number:
+          <%= part.OE_number %></p>
+        <p> Line code:
+          <%= part.line_code %></p>
+        <p> Price:
+          <%= part.price %></p>
+        <p>UPC:
+          <%= part.UPC %></p>
+        <p> Item weight:
+          <%= part.weight %></p>
+      <img src="<%= part.image_url %>">
+
+        </div>
+
+      <% end %>
+
+
+</div>

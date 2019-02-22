@@ -3,9 +3,15 @@ class Part < ApplicationRecord
   validates :name, presence: true
   validates :line_code, presence: true
   validates :price, presence: true
-  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{2})?\z/ }, numericality: { greater_than: 0, less_than: 1000000 }
-  validates :UPC, presence: true
 
-  belongs_to :orders
+  validates :UPC, presence: true
+  validates :weight, presence: true
+
+  belongs_to :car
+  has_many :order_items
+
+  default_scope { where(active: true) }
+
+
 
 end

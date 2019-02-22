@@ -97,143 +97,134 @@
   // label="Year"
   // name="year"
 
-  import React, { Component } from "react";
-  import YearField from "../components/YearField";
-  import MakeField from "../components/MakeField";
-  import ModelField from "../components/ModelField";
-  import CategoryField from "../components/CategoryField";
-  import { browserHistory } from "react-router";
-
-  class NewOrderForm extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-
-        Year: "",
-        Make: "",
-        Model: "",
-        Category: "",
-
-      };
-      this.handleYearChange = this.handleYearChange.bind(this);
-      this.handleMakeChange = this.handleMakeChange.bind(this);
-      this.handleModelChange = this.handleModelChange.bind(this);
-      this.handleCategoryChange = this.handleCategoryChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this),
-      this.handleClear = this.handleClear.bind()
-    }
-
-    // addNewReview(formPayload) {
-    //   let jsonStringInfo = JSON.stringify(formPayload);
-    //   fetch(`/api/v1/airlines/${this.props.id}/s`, {
-    //     method: "POST",
-    //     body: jsonStringInfo,
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json"
-    //     },
-    //     credentials: "same-origin"
-    //   })
-    //     .then(response => {
-    //       if (response.ok) {
-    //         return response;
-    //       } else {
-    //         let errorMessage = `${response.status} (${response.statusText})`,
-    //           error = new Error(errorMessage);
-    //         throw error;
-    //       }
-    //     })
-    //     .then(formPayload => formPayload.json())
-    //     .then(formPayload => {
-    //       this.setState({
-    //       s: this.state.s.concat(formPayload)
-    //     })
-    //     console.log(this.props.id);
-    //       browserHistory.push(`/airlines/${this.props.id}`);
-    //     });
-    // }
-
-    handleMakeChange(event) {
-      this.setState({ Make: event.target.value });
-    }
-    handleModelChange(event) {
-      this.setState({ Model: event.target.value });
-    }
-    handleCategoryChange(event) {
-      this.setState({ Category: event.target.value });
-    }
-
-    handleYearChange(event) {
-      this.setState({ Year: event.target.value });
-    }
-    handleClear(event){
-
-    }
-
-    handleSubmit(event) {
-      event.preventDefault();
-      // event.target.reset();
-
-      let formPayload = {
-        year: this.state.Year,
-        make: this.state.Make,
-        model: this.state.Model,
-        category: this.state.Category,
-        order_id: this.props.id
-      };
-
-
-      this.props.addNewOrder(formPayload);
-      this.setState({Year: '' ,
-                     Make: 1 ,
-                     Model: 1 ,
-                     Category: 1,
-
-                   });
-     }
-
-
-    render() {
-      return (
-        <div>
-          <h3 className="new-order-header"> Tell us what you need </h3>
-          <form className="new-order-form callout"
-          onSubmit={this.handleSubmit}>
-            <YearField
-              content={this.state.Year}
-              label=" Year "
-              name="-Year"
-              handleYearChange={this.handleYearChange}
-            />
-            <MakeField
-              content={this.state.Make}
-              label="Make"
-              name="Make"
-              handleMakeChange={this.handleMakeChange}
-            />
-            <ModelField
-              content={this.state.Model}
-              label="Model"
-              name="model"
-              handleModelChange={this.handleModelChange}
-            />
-            <CategoryField
-              content={this.state.Category}
-              label="Category"
-              name="category"
-              handleCategoryChange={this.handleCategoryChange}
-            />
-          
-
-
-            <div className="button-group">
-              <button className="button" onClick={this.handleClear}>Clear</button>
-              <input className="button" type="submit" value="submit" />
-            </div>
-          </form>
-        </div>
-      );
-    }
-  }
-
-  export default NewOrderForm;
+  // import React, { Component } from "react";
+  // import YearField from "../components/YearField";
+  // import MakeField from "../components/MakeField";
+  // import ModelField from "../components/ModelField";
+  // import CategoryField from "../components/CategoryField";
+  // import { browserHistory } from "react-router";
+  //
+  // class NewOrderForm extends Component {
+  //   constructor(props) {
+  //     super(props);
+  //     this.state = {
+  //
+  //       Year: "",
+  //       Make: "",
+  //       Model: "",
+  //       Category: ""
+  //
+  //     };
+  //     this.handleYearChange = this.handleYearChange.bind(this);
+  //     this.handleMakeChange = this.handleMakeChange.bind(this);
+  //     this.handleModelChange = this.handleModelChange.bind(this);
+  //     this.handleSubmit = this.handleSubmit.bind(this)
+  //   }
+  //
+  //   // addNewReview(formPayload) {
+  //   //   let jsonStringInfo = JSON.stringify(formPayload);
+  //   //   fetch(`/api/v1/airlines/${this.props.id}/s`, {
+  //   //     method: "POST",
+  //   //     body: jsonStringInfo,
+  //   //     headers: {
+  //   //       Accept: "application/json",
+  //   //       "Content-Type": "application/json"
+  //   //     },
+  //   //     credentials: "same-origin"
+  //   //   })
+  //   //     .then(response => {
+  //   //       if (response.ok) {
+  //   //         return response;
+  //   //       } else {
+  //   //         let errorMessage = `${response.status} (${response.statusText})`,
+  //   //           error = new Error(errorMessage);
+  //   //         throw error;
+  //   //       }
+  //   //     })
+  //   //     .then(formPayload => formPayload.json())
+  //   //     .then(formPayload => {
+  //   //       this.setState({
+  //   //       s: this.state.s.concat(formPayload)
+  //   //     })
+  //   //     console.log(this.props.id);
+  //   //       browserHistory.push(`/airlines/${this.props.id}`);
+  //   //     });
+  //   // }
+  //
+  //   handleMakeChange(event) {
+  //     this.setState({ Make: event.target.value });
+  //   }
+  //   handleModelChange(event) {
+  //     this.setState({ Model: event.target.value });
+  //   }
+  //
+  //   handleYearChange(event) {
+  //     this.setState({ Year: event.target.value });
+  //   }
+  //
+  //   handleSubmit(event) {
+  //     event.preventDefault();
+  //     // event.target.reset();
+  //
+  //     let formPayload = {
+  //       year: this.state.Year,
+  //       make: this.state.Make,
+  //       model: this.state.Model
+  //     };
+  //
+  //
+  //     this.props.addNewOrder(formPayload);
+  //     this.setState({Year: '' ,
+  //                    Make: '' ,
+  //                    Model: ''
+  //
+  //                  });
+  //    }
+  //
+  //
+  //   render() {
+  //     return (
+  //       <div>
+  //         <h3 className="new-order-header"> Tell us what you need </h3>
+  //         <form className="new-order-form callout"
+  //         onSubmit={this.handleSubmit}>
+  //           <YearField
+  //             content={this.state.Year}
+  //             label=" Year "
+  //             name="-Year"
+  //             handleYearChange={this.handleYearChange}
+  //           />
+  //           <MakeField
+  //             content={this.state.Make}
+  //             label="Make"
+  //             name="Make"
+  //             handleMakeChange={this.handleMakeChange}
+  //           />
+  //           <ModelField
+  //             content={this.state.Model}
+  //             label="Model"
+  //             name="model"
+  //             handleModelChange={this.handleModelChange}
+  //           />
+  //
+  //           <div className="btn-group" data-toggle="buttons">
+  //            <label className="btn btn-secondary active">
+  //
+  //
+  //             </label>
+  //            </div>
+  //
+  //
+  //
+  //
+  //           <div className="button-group">
+  //             <input className="button" type="submit" value="submit" />
+  //           </div>
+  //         </form>
+  //
+  //       </div>
+  //     );
+  //   }
+  // }
+  //
+  // export default NewOrderForm;

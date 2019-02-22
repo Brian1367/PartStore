@@ -1,0 +1,17 @@
+<ul>
+<div class="row">
+  <div class="large-12 columns">
+    <h1 class="tag-line">My garage </h1>
+    <ul class=input >
+
+    <% @cars.each do |car| %>
+      <li >
+      <%= link_to car.model, car_path(car) %>
+      </li>
+    <% end %>
+    </ul>
+
+  </div>
+</div>
+<h5><%= link_to "Add New Car", new_car_path %></h5>
+</ul>

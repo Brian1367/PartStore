@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
    root 'homes#index'
+   root 'carts#shopping_cart'
   devise_for :users
-  root 'orders#index'
 
-  resources :orders do
-    resources :parts
+  resources :cars do
+    resources :parts, only: [:index, :show] do
+      resources :order_items
+
+    end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :order_items, only: [:create] do
+    resource :carts, only: [:new]
+end
+  resource :carts, only: [:new]
 end

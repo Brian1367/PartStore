@@ -17,7 +17,7 @@
     <nav class="top-bar">
       <div class="top-bar-left">
 
-          <h1 class="logo"><img src="https://media.istockphoto.com/photos/passenger-car-assembled-from-new-spare-auto-parts-for-shop-picture-id929122198" width="125" height="60" /><a href="/">PartStore</a></h1>
+          <h1 class="logo"><i class="fas fa-car"></i><a href="/">PartStore</a></h1>
 
 
       </div>
@@ -40,9 +40,9 @@
         <%= value %>
       </div>
     <%- end -%>
-
+<div class="material">
     <%= yield %>
-
+</div>
     <%= javascript_include_tag 'application' %>
 
     <%- if Rails.env.development? || Rails.env.test? -%>
