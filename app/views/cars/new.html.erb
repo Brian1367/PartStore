@@ -1,9 +1,24 @@
+<%= form_for @car, html: {class: "new_CAR", id: "new_car"} do |f| %>
+  <% if @car.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+	    <ul>
+	      <% @car.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+
 <div class="bg-jet pad-tb-1 border-bottom-lgray">
   <div class="white-text margin-bottom-0 margin-lr-1 font-heading font-size-2"><a>My Garage</a></div>
   <a class="bl white-text underline margin-lr-1 add-car" style="display: none;">Add a car</a>
   <div class="margin-lr-2 width-70" data-vehicle-dropdowns="" style="">
     <div class="ymm-dropdowns">
 	<select class="ymm-select" data-year-dropdown="">
+    <%=f.label :year %>
+
 		<option value="">Year</option>
     <option value="2018">2018</option>
     <option value="2017">2017</option>
@@ -65,16 +80,27 @@
 		<option value="1961">1961</option>
 		<option value="1960">1960</option>
 	</select>
-  <select class="ymm-select" data-make-dropdown=""><option>Make</option><option value="73">Audi</option><option value="31">BMW</option><option value="20">Jaguar</option><option value="11">Land Rover</option><option value="63">Mercedes-Benz</option><option value="32">Mini</option><option value="2">Porsche</option><option value="65">Saab</option><option value="74">Volkswagen</option><option value="27">Volvo</option></select>
-  <select class="ymm-select" data-model-dropdown=""><option>Model</option><option value="118423">128i</option><option value="118424">135i</option><option value="118625">328i</option><option value="118626">328i xDrive</option><option value="118627">335i</option><option value="118629">335i xDrive</option><option value="118628">335is</option><option value="118631">528i</option><option value="118640">528i xDrive</option><option value="118632">535i</option><option value="118633">535i GT</option><option value="118634">535i GT xDrive</option><option value="118635">535i xDrive</option><option value="118636">550i</option><option value="118637">550i GT</option><option value="118638">550i GT xDrive</option><option value="118639">550i xDrive</option><option value="118641">640i</option><option value="118425">650i</option><option value="118642">650i xDrive</option><option value="118442">740Li</option><option value="118441">740i</option><option value="118445">750Li</option><option value="118446">750Li xDrive</option><option value="118443">750i</option><option value="118444">750i xDrive</option><option value="118451">760Li</option><option value="123101">ActiveHybrid 5</option><option value="118447">Alpina B7</option><option value="118450">Alpina B7 xDrive</option><option value="118448">Alpina B7L</option><option value="118449">Alpina B7L xDrive</option><option value="118630">M3</option><option value="123499">M6</option><option value="118454">X3</option><option value="118452">X5</option><option value="118453">X6</option><option value="118643">Z4</option></select>
+  <select class="ymm-select" data-make-dropdown="">
+    <%= f.label :make %>
+    <option>Make</option><option value="73">Audi</option><option value="31">BMW</option><option value="20">Jaguar</option><option value="11">Land Rover</option><option value="63">Mercedes-Benz</option><option value="32">Mini</option><option value="2">Porsche</option><option value="65">Saab</option><option value="74">Volkswagen</option><option value="27">Volvo</option></select>
+  <select class="ymm-select" data-model-dropdown="">
+    <%= f.label :model %>
+    <option>Model</option><option value="118423">128i</option><option value="118424">135i</option><option value="118625">328i</option><option value="118626">328i xDrive</option><option value="118627">335i</option><option value="118629">335i xDrive</option><option value="118628">335is</option><option value="118631">528i</option><option value="118640">528i xDrive</option><option value="118632">535i</option><option value="118633">535i GT</option><option value="118634">535i GT xDrive</option><option value="118635">535i xDrive</option><option value="118636">550i</option><option value="118637">550i GT</option><option value="118638">550i GT xDrive</option><option value="118639">550i xDrive</option><option value="118641">640i</option><option value="118425">650i</option><option value="118642">650i xDrive</option><option value="118442">740Li</option><option value="118441">740i</option><option value="118445">750Li</option><option value="118446">750Li xDrive</option><option value="118443">750i</option><option value="118444">750i xDrive</option><option value="118451">760Li</option><option value="123101">ActiveHybrid 5</option><option value="118447">Alpina B7</option><option value="118450">Alpina B7 xDrive</option><option value="118448">Alpina B7L</option><option value="118449">Alpina B7L xDrive</option><option value="118630">M3</option><option value="123499">M6</option><option value="118454">X3</option><option value="118452">X5</option><option value="118453">X6</option><option value="118643">Z4</option></select>
   <select class="ymm-select" disabled="disabled" data-sub-model-dropdown="" style="display: none"><option value="Trim">Trim</option></select>
   <select class="ymm-select" disabled="disabled" data-body-dropdown="" style="display: none"><option value="Body">Body</option></select>
   <select class="ymm-select" disabled="disabled" data-engine-dropdown="" style="display: none"><option value="Engine">Engine</option></select>
   <select class="ymm-select" disabled="disabled" data-transmission-dropdown="" style="display: none"><option value="Transmission">Transmission</option></select>
 </div>
+
+</div>
+
   </div>
   <ul>
       <li class="saved-car">
-        <a class="ibl margin-lr-1 white-text bv-127955 " href="/Audi-parts/A5/?year=2014&amp;m=406&amp;e=2054&amp;t=9&amp;b=10&amp;d=5027&amp;v=">Shop 2014 A5 parts</a>      	<a class="delete-car ibl font-size-14 line-height-1 bv-127955" data-base-vehicle-id="127955" href="#">×</a>      </li>
+              	      </li>
 </ul>
-</div>
+<div class="submit">
+         <%= f.submit "Add Car" %>
+         <img src="https://listcarbrands.com/wp-content/uploads/2017/09/european-cars.jpg" />
+       </div>
+<% end %>

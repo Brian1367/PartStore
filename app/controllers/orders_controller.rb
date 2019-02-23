@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @WD_collection = Order::WD
 
   end
 

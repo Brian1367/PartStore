@@ -10,18 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_185850) do
+ActiveRecord::Schema.define(version: 2019_02_18_004619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "orders", force: :cascade do |t|
+  create_table "cars", force: :cascade do |t|
     t.integer "year", null: false
     t.string "make", null: false
     t.string "model", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "part_id"
+    t.bigint "order_id"
+    t.decimal "unit_price", precision: 12, scale: 3
+    t.integer "quantity"
+    t.decimal "total_price", precision: 12, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["part_id"], name: "index_order_items_on_part_id"
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "subtotal", precision: 12, scale: 3
+    t.decimal "shipping", precision: 12, scale: 3
+    t.decimal "total", precision: 12, scale: 3
+    t.bigint "order_status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -30,10 +55,13 @@ ActiveRecord::Schema.define(version: 2019_02_12_185850) do
     t.string "line_code", null: false
     t.integer "price", null: false
     t.string "UPC", null: false
-    t.bigint "orders_id"
+    t.string "image_url"
+    t.integer "weight", null: false
+    t.bigint "car_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["orders_id"], name: "index_parts_on_orders_id"
+    t.boolean "active"
+    t.index ["car_id"], name: "index_parts_on_car_id"
   end
 
   create_table "users", force: :cascade do |t|
